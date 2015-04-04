@@ -1,11 +1,11 @@
 <?php
 
-namespace Level14\FfnetRss\Model;
+namespace Level14\Website2Feed\Model;
 
-use Level14\FfnetRss\Model\Base\ItemQuery as BaseItemQuery;
+use Level14\Website2Feed\Model\Base\ItemQuery as BaseItemQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'ffnet_items' table.
+ * Skeleton subclass for performing query and update operations on the 'w2f_items' table.
  *
  *
  *

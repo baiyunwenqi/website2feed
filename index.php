@@ -9,7 +9,7 @@ $config = require 'config.local.php';
 
 $app = new \Slim\Slim(array(
     'debug' => false,
-    'view' => new Level14\FfnetRss\SimpleView,
+    'view' => new Level14\Website2Feed\SimpleView,
     ));
 $app->view()->setApp($app);
 $app->view()->setTemplatesDirectory('./views');
@@ -20,11 +20,11 @@ require 'generated-conf/config.php';
 class ApiKeyException extends Exception {}
 class PageNotFoundException extends Exception {}
 
-use Level14\FfnetRss\Model\FeedQuery;
-use Level14\FfnetRss\Model\Base\ItemQuery;
+use Level14\Website2Feed\Model\FeedQuery;
+use Level14\Website2Feed\Model\Base\ItemQuery;
 
 // Inject the URL generating function
-Level14\FfnetRss\Model\Feed::setFeedUrlFunction(function($id) use ($app, $config) {
+Level14\Website2Feed\Model\Feed::setFeedUrlFunction(function($id) use ($app, $config) {
     return $_SERVER['REQUEST_SCHEME']  . '://' . $_SERVER['HTTP_HOST']
             . $app->urlFor('feed', array('id' => $id))
             . '?apikey=' . $config['apikey'];

@@ -1,6 +1,6 @@
 <?php
-/* @var $this \Level14\FfnetRss\SimpleView */
-/* @var $feeds Level14\FfnetRss\Model\Feed[] */
+/* @var $this \Level14\Website2Feed\SimpleView */
+/* @var $feeds Level14\Website2Feed\Model\Feed[] */
 
 $this->enableLayout();
 $this->setHtmlTitle('Feed list');

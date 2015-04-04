@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" namespace="Level14\FfnetRss\Model" tablePrefix="ffnet_">
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" namespace="Level14\Website2Feed\Model" tablePrefix="w2f_">
   <table name="feeds" idMethod="native" phpName="Feed">
     <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="url" type="VARCHAR" size="1000" required="true"/>

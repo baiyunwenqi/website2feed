@@ -1,8 +1,8 @@
 <?php
 
-/* @var $this \Level14\FfnetRss\SimpleView */
-/* @var $feed Level14\FfnetRss\Model\Feed */
-/* @var $items \Level14\FfnetRss\Model\Item[] */
+/* @var $this \Level14\Website2Feed\SimpleView */
+/* @var $feed Level14\Website2Feed\Model\Feed */
+/* @var $items \Level14\Website2Feed\Model\Item[] */
 
 use \FeedWriter\ATOM;
 

@@ -6,6 +6,6 @@
         "slim/slim": "2.*"
     },
     "autoload": {
-        "psr-4": { "Level14\\FfnetRss\\": "./" }
+        "psr-4": { "Level14\\Website2Feed\\": "./" }
     }
 }

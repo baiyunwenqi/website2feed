@@ -1,6 +1,6 @@
 <?php
 
-namespace Level14\FfnetRss;
+namespace Level14\Website2Feed;
 
 /**
  * Extends the Slim view with a few convenience methods and a simple, one level layout.

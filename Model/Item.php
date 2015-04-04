@@ -1,11 +1,11 @@
 <?php
 
-namespace Level14\FfnetRss\Model;
+namespace Level14\Website2Feed\Model;
 
-use Level14\FfnetRss\Model\Base\Item as BaseItem;
+use Level14\Website2Feed\Model\Base\Item as BaseItem;
 
 /**
- * Skeleton subclass for representing a row from the 'ffnet_items' table.
+ * Skeleton subclass for representing a row from the 'w2f_items' table.
  *
  *
  *

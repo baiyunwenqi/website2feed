@@ -1,5 +1,5 @@
 <?php
-/* @var $this \Level14\FfnetRss\SimpleView */
+/* @var $this \Level14\Website2Feed\SimpleView */
 /* @var $errorMessage string */
 
 $this->app->contentType('text/html');

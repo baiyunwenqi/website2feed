@@ -1,11 +1,11 @@
 <?php
 
-namespace Level14\FfnetRss\Model;
+namespace Level14\Website2Feed\Model;
 
-use Level14\FfnetRss\Model\Base\FeedQuery as BaseFeedQuery;
+use Level14\Website2Feed\Model\Base\FeedQuery as BaseFeedQuery;
 
 /**
- * Skeleton subclass for performing query and update operations on the 'ffnet_feeds' table.
+ * Skeleton subclass for performing query and update operations on the 'w2f_feeds' table.
  *
  *
  *
