@@ -1,0 +1,7 @@
+/nbproject/
+composer.phar
+/vendor/
+
+config.*
+Model/Base/*
+Model/Map/*

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore" namespace="Level14\FfnetRss\Model" tablePrefix="ffnet_">
+  <table name="feeds" idMethod="native" phpName="Feed">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="url" type="VARCHAR" size="1000" required="true"/>
+    <column name="title" type="VARCHAR" size="1000" required="true"/>
+    <column name="updated_date" type="INTEGER" required="true"/>
+    <column name="author" type="VARCHAR" size="1000" required="true"/>
+  </table>
+  <table name="items" idMethod="native" phpName="Item">
+    <column name="id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="feed_id" type="INTEGER" required="true"/>
+    <column name="title" type="VARCHAR" size="1000" required="true"/>
+    <column name="chapter" type="INTEGER" required="true"/>
+    <column name="url" type="VARCHAR" size="1000" required="true"/>
+    <column name="published_date" type="INTEGER" required="true"/>
+    <column name="description" type="LONGVARCHAR"/>
+    <foreign-key foreignTable="feeds" name="fk_feeds" onDelete="CASCADE" onUpdate="CASCADE">
+      <reference local="feed_id" foreign="id"/>
+    </foreign-key>
+    <index name="fk_feeds">
+      <index-column name="feed_id"/>
+    </index>
+  </table>
+  <vendor type="mysql">
+    <parameter name="Engine" value="InnoDB"/>
+    <parameter name="Charset" value="utf8"/>
+  </vendor>
+</database>
