@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "944de21125c10e1b2e678d968de39430",
+    "hash": "7e0fcdfed7191eb7b175d5d17b9d289e",
     "packages": [
         {
             "name": "electrolinux/phpquery",
@@ -135,7 +135,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/edeb1d5b67545fe2ce7f6670362a33f7cfd36247",
+                "url": "https://api.github.com/repos/propelorm/Propel2/zipball/8343998307a3f7c2720b17874942d32e7053ea24",
                 "reference": "edeb1d5b67545fe2ce7f6670362a33f7cfd36247",
                 "shasum": ""
             },

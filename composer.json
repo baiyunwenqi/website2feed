@@ -3,7 +3,8 @@
         "electrolinux/phpquery": "dev-master",
         "mibe/feedwriter": "1.0.*@dev",
         "propel/propel": "~2.0@dev",
-        "slim/slim": "2.*"
+        "slim/slim": "2.*",
+        "symfony/console": "~2.3"
     },
     "autoload": {
         "psr-4": { "Level14\\Website2Feed\\": "./" }
