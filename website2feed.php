@@ -6,12 +6,18 @@ if (php_sapi_name() !== "cli") {
 }
 
 require 'vendor/autoload.php';
+require 'generated-conf/config.php';
+$config = require 'config.local.php';
+
+ini_set('user_agent', 'Website2Feed Test Bot (level14.hu)');
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+
+use Level14\Website2Feed\Model\FeedQuery;
 
 
 class RunCrawlerCommand extends Command {
@@ -65,6 +71,27 @@ class RunCrawlerCommand extends Command {
         
         if (!$dry) {
             throw new RuntimeException('Non-dry runs are disabled for now.');
+        }
+        
+        $feeds = [];
+        if ($single) {
+            $feeds = FeedQuery::create()->findById($single);
+        }
+        else {
+            $feeds = FeedQuery::create()->find();
+        }
+        
+        foreach ($feeds as $feed) {
+            try {
+                var_dump($feed->queryItems());
+            } catch (Exception $ex) {
+                if ($skipErrors) {
+                    print "Error: " . $ex->getMessage() . "\n";
+                }
+                else {
+                    throw $ex;
+                }
+            }
         }
     }
 }

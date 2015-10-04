@@ -51,6 +51,17 @@ class Feed extends BaseFeed
         $temp = self::$generateFeedUrl;
         return $temp($this->getId());
     }
+    
+    /**
+     * Returns the currently available feed items.
+     * Does not modify the database in any way.
+     * 
+     * @return Item[] The feed items
+     */
+    public function queryItems() {
+        $parser = Parsers\ParserLoader::getParser($this->url);
+        return $parser->parseItems();
+    }
 }
 
 Feed::init();
