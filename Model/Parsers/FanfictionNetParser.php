@@ -2,6 +2,8 @@
 
 namespace Level14\Website2Feed\Model\Parsers;
 
+use Level14\Website2Feed\Model\Feed;
+
 class FanfictionNetParser implements ParserInterface {
     private $text = null;
     private $url;
@@ -47,8 +49,8 @@ class FanfictionNetParser implements ParserInterface {
         foreach ($chapters as $key => $opt) {
             $item = new \Level14\Website2Feed\Model\Item();
             
-            $chTitle = $opt->textContent;
-            $chNumber = $opt->getAttribute('value');
+            $chTitle = pq($opt)->text();
+            $chNumber = pq($opt)->attr('value');
             $chLink = sprintf($linkPattern, $chNumber);
 
             $item->setChapter($chTitle);
@@ -60,5 +62,22 @@ class FanfictionNetParser implements ParserInterface {
             $items[] = $item;
         }
         return $items;
+    }
+
+    /**
+     * @return Feed
+     */
+    function parseMetadata()
+    {
+        $feed = new Feed();
+
+        \phpQuery::newDocument($this->getText());
+
+        $feed->setUrl($this->url);
+        $feed->setTitle(pq('b.xcontrast_txt')->text());
+        $feed->setAuthor(pq('a.xcontrast_txt:nth-child(5)')->text());
+        $feed->setUpdatedDate(0);
+
+        return $feed;
     }
 }

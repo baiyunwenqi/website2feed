@@ -30,7 +30,6 @@ Level14\Website2Feed\Model\Feed::setFeedUrlFunction(function($id) use ($app, $co
             . '?apikey=' . $config['apikey'];
 });
 
-
 //
 // Endpoints, hooks
 // Refactor to controller classes if they become too large
@@ -63,7 +62,7 @@ $app->error(function(\Exception $e) use ($app) {
 });
 
 // Main endpoint for the feed readers
-$app->get('/feed/:id', function($id) use ($app) {
+$app->get('/feeds/:id', function($id) use ($app) {
     $feed = FeedQuery::create()->findPk($id);
     if ($feed == null) {
         throw new PageNotFoundException();
@@ -78,12 +77,30 @@ $app->get('/feed/:id', function($id) use ($app) {
     $app->render('atom.php', array('feed' => $feed, 'items' => $items));
 })->name('feed');
 
+$app->post('/feeds', function() use ($app) {
+    $rootUrl = $app->urlFor('root') . '?apikey=' . $GLOBALS['config']['apikey'];
+
+    $url = $app->request->post('url');
+    print 'Submitted url ' . $url;
+    if (empty($url)) {
+        return;
+    }
+
+    $parser = \Level14\Website2Feed\Model\Parsers\ParserLoader::getParser($url);
+    $feed = $parser->parseMetadata();
+
+    $feed->save();
+
+    $app->redirect($rootUrl);
+
+})->name('newfeed');
+
 // Main endpoint for users, list feeds
 $app->get('/', function() use ($app) {
     $feeds = FeedQuery::create()->find();
     
     $app->render('listFeeds.php', array('feeds' => $feeds));
-});
+})->name('root');
 
 $app->run();
 

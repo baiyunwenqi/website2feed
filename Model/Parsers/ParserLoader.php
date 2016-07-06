@@ -9,7 +9,8 @@ class ParserLoader {
     /**
      * Loads the appropriate parser for the feed.
      * 
-     * @param type $url
+     * @param string $url
+     * @return ParserInterface
      */
     public static function getParser($url) {
         if (strpos($url, 'https://www.fanfiction.net') === 0) {

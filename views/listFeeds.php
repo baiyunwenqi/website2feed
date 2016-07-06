@@ -6,6 +6,13 @@ $this->enableLayout();
 $this->setHtmlTitle('Feed list');
 
 ?>
+
+<p>Add feed:</p>
+<form method="post" action="<?= $this->urlWithApikeyFor('newfeed') ?>">
+    <label>URL: <input type="text" name="url"></label>
+    <input type="submit" value="Add">
+</form>
+
 <ul>
     <?php foreach($feeds as $feed) : ?>
     <?php $feedUrl = $feed->getFeedUrl(); ?>

@@ -4,12 +4,12 @@ namespace Level14\Website2Feed;
 
 /**
  * Extends the Slim view with a few convenience methods and a simple, one level layout.
- * 
- * @internal The Slim app is injected with the setApp() method so that views can avoid using Slim::getInstance().
+ *
+ * The Slim app is injected with the setApp() method so that views can avoid using Slim::getInstance().
  */
 class SimpleView extends \Slim\View {
     /**
-     * @var Slim\Slim
+     * @var \Slim\Slim
      */
     protected $app;
     
@@ -55,7 +55,7 @@ class SimpleView extends \Slim\View {
         $this->htmlTitle = $title;
     }
     
-    protected function render($template, $data = null) {
+    protected /*override*/ function render($template, $data = null) {
         $contents = parent::render($template, $data);
         
         if (is_null($this->layoutFile)) {
@@ -64,5 +64,10 @@ class SimpleView extends \Slim\View {
         else {
             return parent::render('layout.php', array('contents' => $contents, 'title' => $this->htmlTitle));
         }
+    }
+
+    public function urlWithApikeyFor($name, $params = [])
+    {
+        return $this->app->urlFor($name, $params) . '?apikey=' . $GLOBALS['config']['apikey'];
     }
 }

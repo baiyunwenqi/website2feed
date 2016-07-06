@@ -5,3 +5,4 @@ composer.phar
 config.*
 Model/Base/*
 Model/Map/*
+.idea/

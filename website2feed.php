@@ -68,11 +68,7 @@ class RunCrawlerCommand extends Command {
         if (!$all && !$single) {
             throw new RuntimeException('Specify either --all or --single.');
         }
-        
-        if (!$dry) {
-            throw new RuntimeException('Non-dry runs are disabled for now.');
-        }
-        
+
         $feeds = [];
         if ($single) {
             $feeds = FeedQuery::create()->findById($single);
@@ -83,7 +79,26 @@ class RunCrawlerCommand extends Command {
         
         foreach ($feeds as $feed) {
             try {
-                var_dump($feed->queryItems());
+                $newItems = $feed->queryItems();
+                $oldCount = $feed->countItems();
+                $newCount = count($newItems);
+                $newDateSet = false;
+                for ($i = $newCount - 1; $i >= $oldCount; $i--) {
+                    $feed->addItem($newItems[$i]);
+                    if (!$newDateSet) {
+                        $feed->setUpdatedDate($newItems[$i]->getPublishedDate());
+                        $newDateSet = true;
+                    }
+                    print "Adding " . $newItems[$i]->getTitle() . "\n";
+                }
+
+                if (!$dry) {
+                    print "Saving " . $feed->getTitle() . "\n";
+                    $feed->save();
+                }
+                else {
+                    print "Dry run, no saving\n";
+                }
             } catch (Exception $ex) {
                 if ($skipErrors) {
                     print "Error: " . $ex->getMessage() . "\n";
