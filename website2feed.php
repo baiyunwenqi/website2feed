@@ -9,7 +9,7 @@ require 'vendor/autoload.php';
 require 'generated-conf/config.php';
 $config = require 'config.local.php';
 
-ini_set('user_agent', 'Website2Feed Test Bot (level14.hu)');
+ini_set('user_agent', $config['userAgent']);
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;

@@ -16,6 +16,8 @@ $app->view()->setTemplatesDirectory('./views');
 
 require 'generated-conf/config.php';
 
+ini_set('user_agent', $config['userAgent']);
+
 // Custom error classes
 class ApiKeyException extends Exception {}
 class PageNotFoundException extends Exception {}
